@@ -1,0 +1,26 @@
+<launch>
+
+<!-- Fake laser -->
+  <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node"
+    name="pointcloud_to_laserscan" required="true">
+    <remap from="cloud_in" to="/camera/depth/color/points"/>
+    <remap from="scan" to="/scan"/>
+    <param name="min_height" value="-1"/>
+    <param name="max_height" value="5"/>
+    <param name="range_min" value="0.1"/>
+    <param name="range_max" value="6.0"/>
+    <!-- <param name="target_frame" value="base_link"/> -->
+  </node>
+
+
+  <node pkg="depthimage_to_laserscan" type="depthimage_to_laserscan"
+    name="depthimage_to_laserscan" required="true">
+    <remap from="image" to="/camera/depth/image_rect_raw"/>
+    <remap from="camera_info" to="/camera/depth/camera_info"/>
+    <remap from="scan" to="depthimage/scan"/>
+    <param name="range_min" value="0.1"/>
+    <param name="range_max" value="6.0"/>
+    <!-- <param name="output_frame_id" value="base_link"/> -->
+  </node>
+
+</launch>
