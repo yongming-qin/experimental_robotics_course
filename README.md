@@ -29,6 +29,7 @@ Videos:
 * `navigation_screen.mp4` is the screen recording.
 
 ## Running
+`git clone` the repository. For final project, the folders of `realsense-ros, rtabmap_ros, turtlebot_files, zed-ros-wrapper` can be deleted if rtabmap and realsense driver have been installed, 
 
 `catkin_make` the `src` code in a workspace. Install the needed packages.
 
