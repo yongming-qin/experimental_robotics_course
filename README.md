@@ -9,6 +9,7 @@ Hardware:
 
 * The robot uses a differential drive mechanism.
 * A realsense D435i 3D camera.
+* [optional] A ouster 3D lidar.
 * A joystick is used for teleoperation and stopping the autonomous movements when needed.
 * An arduino board is used to subscribe command velocity.
 
@@ -30,11 +31,11 @@ Videos:
 * `navigation_screen.mp4` is the screen recording.
 
 ## Running
-`git clone` the repository. For final project, the folders of `realsense-ros, rtabmap_ros, turtlebot_files, zed-ros-wrapper` can be deleted if rtabmap and realsense driver have been installed, 
+`git clone` the repository.
 
 `catkin_make` the `src` code in a workspace. Install the needed packages.
 
-Upload `arduino_cmd_vel` to the Arduino board.
+Upload `arduino_cmd_vel` to the Arduino board. Change the PWM pins to match the robot Aruduino.
 
 
 
