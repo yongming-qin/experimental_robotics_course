@@ -1,0 +1,51 @@
+<launch>
+  <!--
+    Adapted based on
+    http://wiki.ros.org/rtabmap_ros/Tutorials/MappingAndNavigationOnTurtlebot#Localization_mode
+
+    This launch file starts the navigation function for the course robot with realsense camera only.
+    Rtabmap is used for SLAM.
+    ROS package of depthimage_to_laserscan is used to create a fake laser sensor for ROS navigation stack.
+    Yongming Qin
+    2020_1104
+  -->
+
+  <!-- Arguments -->
+  <arg name="rtabmapviz" default="true"/>
+  <arg name="localization" default="false"/>
+  <arg name="database_path" default="~/.ros/rtabmap.db"/>
+  <arg     if="$(arg localization)" name="rtabmap_args" default=""/>
+  <arg unless="$(arg localization)" name="rtabmap_args" default="-d"/>
+
+
+  <!-- start realsense -->
+  <!-- <include file="$(find realsense2_camera)/launch/rs_camera.launch">
+    <arg name="align_depth" value="false"/>
+    <arg name="unite_imu_method" value="linear_interpolation"/>
+    <arg name="enable_gyro" value="false"/>
+    <arg name="enable_accel" value="false"/>
+    <arg name="enable_pointcloud" value="false"/>
+  </include> -->
+
+  <!-- <node pkg="imu_filter_madgwick" type="imu_filter_node" name="realsense_imu_filter" output="screen">
+    <remap from="/imu/data_raw" to="/camera/imu"/>
+    <remap from="/imu/data" to="/rtabmap/imu"/>
+    <param name="use_mag" value="false"/>
+    <param name="publish_tf" value="false"/>
+    <param name="world_frame" value="enu"/>
+  </node> -->
+
+  <!-- tf transform -->
+  <!-- <node pkg="tf" type="static_transform_publisher"  name="base_to_camera"
+        args="1.0 0.0 0.0 0 0 0 base_link camera_link 1" /> -->
+
+  <node pkg="tf" type="static_transform_publisher"  name="base_to_ouster"
+        args="1.0 0.0 0.0 0 0 0 base_link os1_sensor 1" />
+
+  <!-- start ouster and rtabmap -->
+  <include file="$(find thk_nav)/launch_slam/rtabmap_ouster.launch">
+  </include>
+
+
+
+</launch>
