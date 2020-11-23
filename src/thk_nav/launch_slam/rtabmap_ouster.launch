@@ -35,6 +35,8 @@
       <arg name="os1_udp_dest" value="$(arg os1_udp_dest)"/>
       <arg     if="$(arg scan_20_hz)" name="lidar_mode" value="1024x20"/>
       <arg unless="$(arg scan_20_hz)" name="lidar_mode" value="1024x10"/>
+      <arg name="timestamp_mode" value="TIME_FROM_PTP_1588"/>
+      <arg name="image" value="true"/>
     </include>
 
     <!-- IMU orientation estimation and publish tf accordingly to os1_sensor frame -->
