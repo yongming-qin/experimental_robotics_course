@@ -21,7 +21,7 @@
 
   <arg name="with_camera" default="true"/>
   <arg name="localization" default="true"/>
-  <arg name="database_path" default="/home/yq/Data/thk_files/room_seg.db"/>
+  <arg name="database_path" default="/home/yq/Data/thk_files_1100/room_seg.db"/>
   <arg     if="$(arg localization)" name="rtabmap_args" default=""/>
   <arg unless="$(arg localization)" name="rtabmap_args" default="-d"/>
 
@@ -95,6 +95,6 @@
   <!-- rviz -->
   <group if="$(arg open_rviz)"> 
     <node pkg="rviz" type="rviz" name="rviz" required="true"
-          args="-d $(find turtlebot3_navigation)/rviz/turtlebot3_navigation.rviz"/>
+          args="-d $(find thk_nav)/rviz/turtlebot3_navigation.rviz"/>
   </group>
 </launch>
