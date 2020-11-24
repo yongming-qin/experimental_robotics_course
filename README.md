@@ -3,7 +3,7 @@
 ## Description
 
 This repository contains the code for the experimental robotics course.
-![Setup](https://github.com/yongming-qin/experimental_robotics_course/media/setup.jpg)
+![Setup](https://https://github.com/yongming-qin/experimental_robotics_course/blob/master/media/setup.jpg)
 
 Hardware:
 
