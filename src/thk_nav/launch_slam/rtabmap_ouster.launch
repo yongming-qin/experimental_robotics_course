@@ -23,7 +23,7 @@
     <arg name="os1_udp_dest" default="10.5.5.1"/>
 
     <arg name="frame_id" default="os1_sensor"/>
-    <arg name="rtabmapviz"    default="true"/>
+    <arg name="rtabmapviz"    default="false"/>
     <arg name="scan_20_hz"    default="true"/>
     <arg name="use_sim_time"  default="false"/>
     <param if="$(arg use_sim_time)" name="use_sim_time" value="true"/>
@@ -37,6 +37,7 @@
       <arg unless="$(arg scan_20_hz)" name="lidar_mode" value="1024x10"/>
       <arg name="timestamp_mode" value="TIME_FROM_PTP_1588"/>
       <arg name="image" value="true"/>
+      <arg name="viz" value="false"/>
     </include>
 
     <!-- IMU orientation estimation and publish tf accordingly to os1_sensor frame -->
@@ -119,7 +120,7 @@
 
         <param name="Grid/FromDepth"       value="false"/>
         <param name="Grid/NormalsSegmentation"       value="false"/>
-        <param name="Grid/MaxGroundHeight"       value="-0.4"/>
+        <param name="Grid/MaxGroundHeight"       value="-0.5"/>
         <param name="Grid/MinGroundHeight"       value="-2"/>
         <param name="Grid/MaxObstacleHeight"       value="0.5"/>
         <param name="Grid/NoiseFilteringMinNeighbors"       value="5"/>

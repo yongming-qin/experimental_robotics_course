@@ -10,8 +10,8 @@
 
 // The min amount of PWM the motors need to move. Depends on the battery, motors and controller.
 // The max amount is defined by PWMRANGE in Arduino.h
-#define PWM_MIN 40
-#define PWMRANGE 80
+#define PWM_MIN 60
+#define PWMRANGE 100
 
 
 // Declare functions
