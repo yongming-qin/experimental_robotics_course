@@ -12,8 +12,8 @@
 
   <!-- Arguments -->
   <arg name="rtabmapviz" default="true"/>
-  <arg name="localization" default="false"/>
-  <arg name="database_path" default="~/.ros/rtabmap.db"/>
+  <arg name="localization" default="true"/>
+  <arg name="database_path" default="/home/yq/for_offline_path_planning.db"/>
   <arg     if="$(arg localization)" name="rtabmap_args" default=""/>
   <arg unless="$(arg localization)" name="rtabmap_args" default="-d"/>
 
