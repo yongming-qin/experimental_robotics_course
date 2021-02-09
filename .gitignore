@@ -49,3 +49,16 @@ qtcreator-*
 
 # Catkin custom files
 CATKIN_IGNORE
+
+.catkin_workspace
+drone_bags
+frames.gv
+frames.pdf
+frames_realsense.pdf
+frames_turtlebot.pdf
+ouster_files/
+ouster_map/
+realsense_map/
+rtabmap_database/
+sid_robot_files/
+videos/

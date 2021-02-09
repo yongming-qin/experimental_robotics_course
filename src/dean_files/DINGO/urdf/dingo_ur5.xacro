@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<robot name="dingo_ur5" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Default arguments -->
+  <xacro:arg name="robot_name" default="dingo_ur5" />
+  <xacro:arg name="arm_name" default="ur" />
+  <xacro:arg name="gripper_name" default="demat" />
+  <xacro:arg name="camera_module" default="realsense" />
+
+  <!-- Properties -->
+  <xacro:property name="arm" value="$(arg arm_name)" />
+  <xacro:property name="gripper" value="$(arg gripper_name)" />
+  
+  <xacro:property name="arm_rpy" value="${pi/2} ${0} ${pi/2}" />
+
+  <!-- Include macros -->
+  <xacro:include filename="$(find DINGO)/urdf/DINGO.xacro"/>
+  <xacro:include filename="$(find ur_description)/urdf/ur5.urdf.xacro"/>
+
+  <!-- Instantiate robots -->
+  <xacro:if value="${arm == 'ur'}" >
+    <xacro:ur5_robot prefix="ur5_" joint_limited="true" shoulder_pan_lower_limit="${pi/2}" shoulder_pan_upper_limit="${1.2*pi}" shoulder_lift_lower_limit="${-1.2*pi}" shoulder_lift_upper_limit="${-0.2*pi}" elbow_joint_lower_limit="${-pi}" elbow_joint_upper_limit="${0}" wrist_1_lower_limit="${-1.5*pi}" wrist_1_upper_limit="${-pi/2}" wrist_2_lower_limit="${-pi}" wrist_2_upper_limit="${pi/2}" wrist_3_lower_limit="${-0.7*pi}" wrist_3_upper_limit="${1.1*pi}"/>
+  </xacro:if>
+
+
+  <!-- Connection of the dingo base with the ur5 arm -->
+  <joint name="connection" type="fixed">
+    <parent link="robot_footprint" />
+    <child link = "ur5_base_link" />
+    <origin xyz="0.3 0.0 0.12" rpy="0.0 0.0 -1.7" />
+  </joint>
+
+
+
+
+</robot>
