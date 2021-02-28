@@ -3,7 +3,7 @@
 ## Description
 
 This repository contains the code for the experimental robotics course.
-![Setup](media/setup.jpg | width=300)
+![Setup](media/setup.jpg)
 
 Hardware:
 
