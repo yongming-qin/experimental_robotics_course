@@ -14,7 +14,7 @@
   <xacro:property name="arm_rpy" value="${pi/2} ${0} ${pi/2}" />
 
   <!-- Include macros -->
-  <xacro:include filename="$(find DINGO)/urdf/DINGO.xacro"/>
+  <xacro:include filename="$(find DINGO)/urdf/dingo.xacro"/>
   <xacro:include filename="$(find ur_description)/urdf/ur5.urdf.xacro"/>
 
   <!-- Instantiate robots -->
@@ -25,9 +25,9 @@
 
   <!-- Connection of the dingo base with the ur5 arm -->
   <joint name="connection" type="fixed">
-    <parent link="robot_footprint" />
+    <parent link="base_footprint" />
     <child link = "ur5_base_link" />
-    <origin xyz="0.3 0.0 0.12" rpy="0.0 0.0 -1.7" />
+    <origin xyz="0.3 0.0 0.12" rpy="0.0 0.0 0" />
   </joint>
 
 
