@@ -10,7 +10,7 @@
     <!-- Robot initial pose -->
   <arg name="x" default="-.65"/>
   <arg name="y" default="0"/>
-  <arg name="z" default="0"/>
+  <arg name="z" default="0.5"/>
   <arg name="roll" default="0"/>
   <arg name="pitch" default="0"/>
   <arg name="yaw" default="0"/>
