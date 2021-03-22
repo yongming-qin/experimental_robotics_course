@@ -21,7 +21,7 @@
 
   <arg name="with_camera" default="true"/>
   <arg name="localization" default="true"/>
-  <arg name="database_path" default="/home/yq/1201_fine.db"/>
+  <arg name="database_path" default="/home/yq/thk_ws/ouster_map/1201_coarse.db"/>
   <arg     if="$(arg localization)" name="rtabmap_args" default=""/>
   <arg unless="$(arg localization)" name="rtabmap_args" default="-d"/>
 
