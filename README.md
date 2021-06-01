@@ -35,7 +35,7 @@ Videos:
 ## Running
 `git clone` the repository.
 
-`catkin_make` the `src` code in a workspace. Install the needed packages.
+`catkin build` the `src` code in a workspace. Install the needed packages.
 This command helps to install the dependency but the installation is not complete.
 `rosdep install --from-paths src --ignore-src -r -y`
 
