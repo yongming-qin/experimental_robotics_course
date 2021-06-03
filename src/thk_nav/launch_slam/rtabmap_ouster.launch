@@ -19,11 +19,11 @@
 
 
     <!-- Required: -->
-    <arg name="os1_hostname" default="10.5.5.98"/>
+    <arg name="os1_hostname" default="10.5.5.73"/>
     <arg name="os1_udp_dest" default="10.5.5.1"/>
 
     <arg name="frame_id" default="os1_sensor"/>
-    <arg name="rtabmapviz"    default="false"/>
+    <arg name="rtabmapviz"    default="true"/>
     <arg name="scan_20_hz"    default="true"/>
     <arg name="use_sim_time"  default="false"/>
     <param if="$(arg use_sim_time)" name="use_sim_time" value="true"/>
