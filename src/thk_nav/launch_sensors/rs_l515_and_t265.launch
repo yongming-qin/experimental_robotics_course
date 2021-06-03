@@ -17,7 +17,7 @@
   <arg name="topic_odom_in"             default="odom_in"/>
   <arg name="calib_odom_file"           default=""/>
 
-  <!-- <group ns="$(arg camera1)">
+  <group ns="$(arg camera1)">
     <include file="$(find realsense2_camera)/launch/includes/nodelet.launch.xml">
       <arg name="device_type"           value="$(arg device_type_camera1)"/>
       <arg name="serial_no"             value="$(arg serial_no_camera1)"/>
@@ -29,7 +29,7 @@
       <arg name="calib_odom_file"       value="$(arg calib_odom_file)"/>
       <arg name="enable_pose"           value="true"/>
     </include>
-  </group> -->
+  </group>
 
   <group ns="$(arg camera2)">
     <include file="$(find realsense2_camera)/launch/includes/nodelet.launch.xml">

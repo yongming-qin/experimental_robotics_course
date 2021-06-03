@@ -15,7 +15,7 @@
     <arg name="use_rtabmapviz"            default="true"/>
     
 
-    <!-- <include file="$(find realsense2_camera)/launch/rs_d400_and_t265.launch">
+    <include file="$(find thk_nav)/launch_sensors/rs_l515_and_t265.launch">
             <arg name="device_type_camera1"             value="$(arg device_type_camera1)"/>
             <arg name="device_type_camera2"             value="$(arg device_type_camera2)"/>
             <arg name="serial_no_camera1"               value="$(arg serial_no_camera1)"/>
@@ -24,7 +24,7 @@
             <arg name="camera2"                         value="$(arg camera2)"/>
             <arg name="clip_distance"                   value="$(arg clip_distance)"/>
             
-    </include> -->
+    </include>
 
     <include file="$(find rtabmap_ros)/launch/rtabmap.launch">
             <arg name="rtabmap_args"       value="--delete_db_on_start"/>
