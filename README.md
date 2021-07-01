@@ -33,7 +33,7 @@ Videos:
 * `navigation_screen.mp4` is the screen recording.
 
 ## Running
-`git clone` the repository.
+`git clone` the repository. Rename `experimental_robotics_course` to `exp_ws`. Or you can just use the ROS packages in src folder.
 
 `catkin build` the `src` code in a workspace. Install the needed packages.
 This command helps to install the dependency but the installation is not complete.
