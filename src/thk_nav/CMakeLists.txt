@@ -135,10 +135,10 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/thk_nav_node.cpp)
 
-add_executable(coverage_path_planner src/coverage_path_planner.cpp)
-target_link_libraries(coverage_path_planner
-    ${catkin_LIBRARIES}
-    )
+# add_executable(coverage_path_planner src/coverage_path_planner.cpp)
+# target_link_libraries(coverage_path_planner
+#     ${catkin_LIBRARIES}
+#     )
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
