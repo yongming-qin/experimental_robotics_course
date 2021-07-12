@@ -33,11 +33,12 @@ Videos:
 * `navigation_screen.mp4` is the screen recording.
 
 ## Running
-`git clone` the repository. Rename `experimental_robotics_course` to `exp_ws`. Or you can just use the ROS packages in src folder.
+`git clone` the repository. Change directory into the ROS workspace folder `exp_ws`. Or you can just use the ROS packages in src folder.
 
-`catkin build` the `src` code in a workspace. Install the needed packages.
+Install the needed packages.
 This command helps to install the dependency but the installation is not complete.
 `rosdep install --from-paths src --ignore-src -r -y`
+Copile the code, e.g., `catkin build`. 
 
 Upload `arduino_cmd_vel` to the Arduino board. Change the PWM pins to match the robot Aruduino.
 
