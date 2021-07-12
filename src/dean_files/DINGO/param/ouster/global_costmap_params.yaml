@@ -1,0 +1,10 @@
+global_costmap:
+  global_frame: map
+  robot_base_frame: os1_sensor
+
+  update_frequency: 5
+  publish_frequency: 5
+  transform_tolerance: 1.5
+
+  static_map: true
+ 

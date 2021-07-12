@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+
+  <!-- PF for localization -->
+  <node pkg="human_walk_pf_python" name="human_walk_pf_python" type="human_walk_pf_python.py"/>
+
+    <!-- prediction based on motion and head -->
+  <node pkg="long_term_pred_head" name="long_term_pred_head" type="long_term_pred_head.py"/>
+  <node pkg="long_term_pred_non_holo" name="long_term_pred_non_holo" type="long_term_pred_non_holo.py"/>
+  
+    <!-- combination of the predictions-->
+  <node pkg="pose_predictor_probabilistic" name="pose_predictor_probabilistic" type="pose_predictor_probabilistic"/>
+
+
+</launch>

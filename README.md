@@ -42,17 +42,19 @@ This command helps to install the dependency but the installation is not complet
 Upload `arduino_cmd_vel` to the Arduino board. Change the PWM pins to match the robot Aruduino.
 
 
-
+For realsense:
 ```
 roslaunch simple_drive course_drive.launch
 roslaunch thk_nav course_slam_realsense.launch
 roslaunch thk_nav course_navigation_realsense.launch
 ```
 
+For ouster:
+```
+roslaunch simple_drive course_drive.launch
+roslaunch thk_nav course_slam_ouster.launch
+roslaunch thk_nav course_navigation_ouster.launch
+```
+
 The joystick controls the robot via `teleop/cmd_vel`. The `move_base` node of navigation stack controls the robot via `move_base/cmd_vel`. The two are subscribed by `simple_drive/cmd_vel_mux` that determines which one is sent to Arduino controller through `cmd_vel`.
 
-
-## Support for ouster 3D lidar
-Please install rtabmap from source so that lidars can be supported. https://github.com/introlab/rtabmap_ros
-* Install `libpointmatcher, libnano` via complilation.
-* Install `rtabmap` (1. not anaconda python 2. swtich to melodic-devel branch ).  Download the `rtabmap_ros` (swtich to melodic-devel branch).

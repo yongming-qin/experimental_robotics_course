@@ -11,8 +11,8 @@
   -->
 
   <!-- Arguments -->
-  <arg name="rtabmapviz" default="true"/>
-  <arg name="localization" default="false"/>
+  <arg name="rtabmapviz" default="false"/>
+  <arg name="localization" default="true"/>
   <arg name="database_path" default="~/.ros/rtabmap.db"/>
   <arg     if="$(arg localization)" name="rtabmap_args" default=""/>
   <arg unless="$(arg localization)" name="rtabmap_args" default="-d"/>
@@ -39,8 +39,8 @@
   <!-- <node pkg="tf" type="static_transform_publisher"  name="base_to_camera"
         args="1.0 0.0 0.0 0 0 0 base_link camera_link 1" /> -->
 
-  <node pkg="tf" type="static_transform_publisher"  name="base_to_ouster"
-        args="1.0 0.0 0.0 0 0 0 base_link os1_sensor 1" />
+  <!-- <node pkg="tf" type="static_transform_publisher"  name="base_to_ouster"
+        args="1.0 0.0 0.0 0 0 0 base_link os1_sensor 1" /> -->
 
   <!-- start ouster and rtabmap -->
   <include file="$(find thk_nav)/launch_slam/rtabmap_ouster.launch">

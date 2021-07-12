@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+
+	<param name="simulation" type="bool" value="true"/> <!-- used by the DINGO_controller-->
+	<param name="escorting" type="bool" value="true"/> <!-- used by the virtual spring controller and removes -x driving cmd-->
+  <param name="limit_theta" type="bool" value="false"/> <!-- used by the partical filter-->
+  <param name="prediction_method" type="int" value="3"/> <!-- 1 = rigid point infront of human , 2 = holonomic (CV), 3 = holonomic + head pose -->
+
+  <!-- Robot initial pose -->
+  <arg name="x" default="0"/>
+  <arg name="y" default="-5"/>
+  <arg name="z" default="0.5"/>
+  <arg name="roll" default="0"/>
+  <arg name="pitch" default="0"/>
+  <arg name="yaw" default="0"/>
+
+  <!-- publish joint states-->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="use_gui" value="false"/>
+  </node>
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find DINGO)/launch/DINGO_control.yaml" command="load"/>
+
+  <!-- load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+	output="screen" ns="/robot" args="joint_state_controller
+					  front_left_velocity_controller
+					  front_right_velocity_controller
+					  back_left_velocity_controller
+					  back_right_velocity_controller
+					  back_left_position_controller
+					  back_right_position_controller
+					  front_left_position_controller
+					  front_right_position_controller"/>
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+	respawn="false" output="screen">
+    <remap from="/joint_states" to="/robot/joint_states" />
+  </node>
+
+  <!-- define location of .world File -->
+  <arg name="world_file" default="$(find turtlebot3_gazebo)/worlds/turtlebot3_house.world"/>
+
+  <!-- Launch Gazebo World with the file defined above-->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="use_sim_time" value="true"/>
+    <arg name="paused" value="true"/>
+    <arg name="debug" value="false"/>
+    <arg name="gui" value="true" />
+    <arg name="world_name" value="$(arg world_file)"/>
+  </include>
+
+
+  <!-- Find my robot Description-->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find DINGO)/urdf/dingo_ur5.xacro'"/>
+
+  <!-- Spawns Robot -->
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+        args="-urdf -param robot_description -model robot
+              -x $(arg x) -y $(arg y) -z $(arg z)
+              -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)
+              -J ur5_shoulder_lift_joint -1.8
+              -unpause"/>
+
+
+  <!-- <node pkg="joy" name="joy" type="joy_node">
+    <remap from="/joy" to="/joy_driving"/>
+  </node> -->
+
+  <!-- converts joy_driving to cmd_vel
+  <node pkg="joytotwist" name="joytotwist" type="joytotwist"/>
+    -->
+
+   <!-- creates static tf between the gazebo_dingo_frame published by the gazebo_odom_publisher and the base_footprint so the robot can be visualized in rviz -->
+  <node pkg="tf2_ros" type="static_transform_publisher" name="link1_broadcaster" args="0 0 0 0 0 0 1 gazebo_dingo_frame base_footprint" />
+
+  <!-- the controller that I wrote -->
+  <node pkg="DINGO_controller" name="DINGO_controller" type="DINGO_controller"/>
+
+  <!-- publishes odom and frame of robot in gazebo -->
+  <node pkg="gazebo_odom_publisher" name="gazebo_odom_pubslisher" type="gazebo_odom_publisher.py"/>
+
+
+
+  <!-- <node name="rviz" pkg="rviz" type="rviz" respawn="false" args="-d $(find DINGO)/rviz/DINGO_rviz_default.rviz"/> -->
+
+</launch>
